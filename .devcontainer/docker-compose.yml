@@ -1,0 +1,54 @@
+version: '3.8'
+
+services: 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-81
+
+    volumes:
+      - ../..:/workspaces:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /usr/local/bin/entrypoint
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+
+    # Uncomment the next line to use a non-root user for all processes.
+    # user: vscode
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+    # environment:
+    #   - MH_SENDMAIL_SMTP_ADDR=mailhog:1025
+
+  db:
+    image: mysql:8.0-oracle
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: magento
+      MYSQL_DATABASE: magento
+      MYSQL_USER: magento
+      MYSQL_PASSWORD: magento
+
+    # Add "forwardPorts": ["3306"] to **devcontainer.json** to forward MariaDB locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  redis:
+    image: redis:latest
+    network_mode: service:db
+  ampq:
+    image: rabbitmq:latest
+    network_mode: service:db
+  mailhog:
+    image: mailhog/mailhog
+    network_mode: service:db  
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    network_mode: service:db
+    environment:
+      - discovery.type=single-node
+volumes:
+  db-data:
