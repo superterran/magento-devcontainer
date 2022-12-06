@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile-81
+      dockerfile: Dockerfile
 
     volumes:
       - ../..:/workspaces:cached

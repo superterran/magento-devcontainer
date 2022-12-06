@@ -1,7 +1,12 @@
 #!/bin/bash
 cd /workspaces/meta-business-extension-demo
 
-composer install
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition ./tmp
+mv ./tmp/* . && rm -rf ./tmp
+
+composer require facebook/facebook-for-magento2
+
+rm app/etc/config.php app/etc/env.php
 
 bin/magento setup:install \
     --backend-frontname=backend \
