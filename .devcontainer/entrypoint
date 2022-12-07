@@ -2,6 +2,13 @@
 
 composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION /var/www/html
 
+if [ -n "$AUTO_POPULATE_WORKSPACE" ]; then
+
+  mv -f /var/www/html/* $AUTO_WORKSPACE_FOLDER
+  cd $AUTO_WORKSPACE_FOLDER
+fi
+
+
 composer -q require $AUTO_COMPOSER_REQUIRE
 
 rm app/etc/config.php app/etc/env.php

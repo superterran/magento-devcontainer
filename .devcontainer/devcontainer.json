@@ -4,6 +4,7 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"shutdownAction": "stopCompose"
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -27,6 +28,7 @@
 		"AUTO_COMPOSER_REQUIRE": "facebook/facebook-for-magento2",
 		"AUTO_MAGENTO_SAMPLEDATA": "true",
 		"AUTO_POPULATE_WORKSPACE": "true",
+		"AUTO_WORKSPACE_FOLDER": "/workspaces/${localWorkspaceFolderBasename}"
 	},
 
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
