@@ -13,6 +13,7 @@ RUN docker-php-ext-configure gd --with-jpeg --with-freetype && \
 RUN echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/memory_limit.ini
 
 COPY ./entrypoint /usr/local/bin/entrypoint
+COPY auth.json /root/.composer/auth.json
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 # ARG NODE_VERSION="16"
