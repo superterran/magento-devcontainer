@@ -38,6 +38,11 @@ bin/magento setup:install \
     --page-cache-redis-db=1 \
     --page-cache-redis-port=6379
 
+if [ -n "$AUTO_MAGENTO_SAMPLEDATA" ]; then
+  bin/magento sampledata:deploy
+  bin/magento setup:upgrade
+fi
+
 ## Configure Application
 bin/magento config:set --lock-env web/unsecure/base_url "http://localhost:8080/"
 bin/magento config:set --lock-env web/secure/base_url "http://localhost:8080/"
@@ -57,8 +62,9 @@ bin/magento config:set --lock-env catalog/search/enable_eav_indexer 1
 
 bin/magento config:set --lock-env dev/static/sign 0
 
-bin/magento deploy:mode:set -s developer
 bin/magento cache:disable block_html full_page
+
+bin/magento deploy:mode:set production
 
 bin/magento indexer:reindex
 bin/magento cache:flush
