@@ -1,13 +1,17 @@
 #!/bin/bash
 
-composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION /var/www/html
+if [ -n "$AUTO_CREATE_PROJECT" ]; then
 
-if [ -n "$AUTO_POPULATE_WORKSPACE" ]; then
+  composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION /var/www/html
 
-  mv -f /var/www/html/* $AUTO_WORKSPACE_FOLDER
-  cd $AUTO_WORKSPACE_FOLDER
+  if [ -n "$AUTO_POPULATE_WORKSPACE" ]; then
+    mv -f /var/www/html/* $AUTO_WORKSPACE_FOLDER
+  fi
 fi
 
+if [ -n "$AUTO_POPULATE_WORKSPACE" ]; then
+  cd $AUTO_WORKSPACE_FOLDER
+fi
 
 composer -q require $AUTO_COMPOSER_REQUIRE
 

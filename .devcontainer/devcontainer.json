@@ -28,7 +28,8 @@
 		"AUTO_COMPOSER_REQUIRE": "facebook/facebook-for-magento2",
 		"AUTO_MAGENTO_SAMPLEDATA": "true",
 		"AUTO_POPULATE_WORKSPACE": "true",
-		"AUTO_WORKSPACE_FOLDER": "/workspaces/${localWorkspaceFolderBasename}"
+		"AUTO_WORKSPACE_FOLDER": "/workspaces/${localWorkspaceFolderBasename}",
+		"AUTO_CREATE_PROJECT": "true"
 	},
 
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
