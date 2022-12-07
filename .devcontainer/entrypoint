@@ -1,10 +1,8 @@
 #!/bin/bash
-cd /workspaces/meta-business-extension-demo
-
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition ./tmp
+composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION ./tmp
 mv ./tmp/* . && rm -rf ./tmp
 
-composer require facebook/facebook-for-magento2
+composer -q require $AUTO_COMPOSER_REQUIRE
 
 rm app/etc/config.php app/etc/env.php
 

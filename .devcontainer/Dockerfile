@@ -1,3 +1,4 @@
+# FROM mcr.microsoft.com/devcontainers/php:0-8.1
 FROM mcr.microsoft.com/devcontainers/php:0-8.1-bullseye
 
 # Install MariaDB client

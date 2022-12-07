@@ -21,6 +21,12 @@
 		}
 	},
 
+	"containerEnv": {
+		"AUTO_MAGENTO_EDITION": "community",
+		"AUTO_MAGENTO_VERSION": "2.4.5-p1",
+		"AUTO_COMPOSER_REQUIRE": "facebook/facebook-for-magento2"
+	},
+
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
 	"forwardPorts": [8080, 3306]
 
