@@ -13,7 +13,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: "{{defaultContext}}:.devcontainer"
+          context: ".devcontainer"
           push: true
           tags: superterran/magento-devcontainer:latest
         
