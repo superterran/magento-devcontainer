@@ -1,7 +1,6 @@
 #!/bin/bash
 
-composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION ./tmp
-mv ./tmp/* . && rm -rf ./tmp
+composer create-project --repository-url=https://repo.magento.com/ magento/project-$AUTO_MAGENTO_EDITION-edition=$AUTO_MAGENTO_VERSION /var/www/html
 
 composer -q require $AUTO_COMPOSER_REQUIRE
 
