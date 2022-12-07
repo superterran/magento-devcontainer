@@ -16,5 +16,4 @@ jobs:
           context: "{{defaultContext}}:.devcontainer"
           push: true
           tags: superterran/magento-devcontainer:latest
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}          
+        
