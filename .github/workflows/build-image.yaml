@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: "{{defaultContext}}:.devcontainer"
+          push: true
+          tags: superterran/magento-devcontainer:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}          
